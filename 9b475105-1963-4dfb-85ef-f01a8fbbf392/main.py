@@ -1,11 +1,10 @@
-
 from surmount.base_class import Strategy, TargetAllocation
 from surmount.technical_indicators import MACD
 from surmount.logging import log
 
 class TradingStrategy(Strategy):
     def __init__(self):
-        self.tickers = ["BTC", "ETH", "LTC"]  # Example cryptocurrency tickers. Adjust accordingly.
+        self.tickers = ["TSLA", "AAPL", "MSFT"]  # Example cryptocurrency tickers. Adjust accordingly.
 
     @property
     def interval(self):
