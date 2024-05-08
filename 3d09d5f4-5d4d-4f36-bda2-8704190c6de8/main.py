@@ -5,7 +5,7 @@ from surmount.logging import log
 class TradingStrategy(Strategy):
     @property
     def assets(self):
-        # Strategy applies to gcusd
+        # Strategy applies to gcusd #
         return ["gcusd"]
 
     @property
