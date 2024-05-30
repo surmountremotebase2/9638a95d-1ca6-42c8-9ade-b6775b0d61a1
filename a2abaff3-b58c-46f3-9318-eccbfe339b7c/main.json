@@ -1,1 +1,1 @@
-{"interval": "", "assets": ["GME"], "strategy": []}
+{"groups": {}, "interval": "1hour", "assets": ["GME"], "strategy": [{"type": "IF", "conditions": [{"type": "BINARY", "first": {"name": "PRICE", "args": {"ticker": "GME"}}, "second": {"name": "constant", "args": {"value": "10"}}, "comp": ">", "operator": ""}], "if_action": {"type": "ACTION", "steps": [{"action": "allocation", "asset": "GME", "amount": 100}]}, "else_action": {"type": "ACTION", "steps": [{"action": "allocation", "asset": "GME", "amount": 100}]}}]}
