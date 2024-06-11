@@ -1,3 +1,4 @@
+
 from surmount.base_class import Strategy, TargetAllocation
 from surmount.technical_indicators import SMA
 from surmount.logging import log
@@ -48,4 +49,4 @@ class TradingStrategy(Strategy):
             log(f"No action for {self.ticker}")
             # We retain the existing allocation (not changing the position)
 
-        return TargetDisposition(allocation_dict)
+        return TargetAllocation(allocation_dict)
