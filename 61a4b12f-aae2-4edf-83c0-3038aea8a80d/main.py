@@ -9,8 +9,8 @@ class TradingStrategy(Strategy):
         self.assets = ["AAPL"]
         self.data_AAPL = {
             "average_target_price": TP("AAPL"),
-            "sma_10": SMA("AAPL", length=10),
-            "slope_3": Slope("AAPL", length=3)
+            "sma_10": SMA("AAPL",list(self.data_AAPL.values()), length=10),
+            "slope_3": Slope("AAPL",list(self.data_AAPL.values()), length=3)
         }
     
     @property
