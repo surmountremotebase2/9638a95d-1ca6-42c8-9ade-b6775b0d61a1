@@ -23,6 +23,7 @@ class TradingStrategy(Strategy):
         allocation_dict = {ticker: 0.5 for ticker in self.tickers}
         
         # Access the GDP data by country
+        log(str(data.keys()))
         gdp_data = data[("gdp_by_country",)]
         if not gdp_data:
             log("No GDP data available")
