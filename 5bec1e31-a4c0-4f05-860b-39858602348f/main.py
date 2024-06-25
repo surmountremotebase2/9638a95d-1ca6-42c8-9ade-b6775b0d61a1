@@ -24,7 +24,7 @@ class TradingStrategy(Strategy):
         
         # Get the latest 5-year breakeven inflation rate
         log(str(data.keys()))
-        inflation_data = data[("5year_breakeven_inflation_rate"),]
+        inflation_data = data[("5year_breakeven_inflation_rate",)]
         if not inflation_data:
             log("No inflation data available")
             return TargetAllocation(allocation_dict)
