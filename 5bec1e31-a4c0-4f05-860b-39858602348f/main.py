@@ -5,7 +5,7 @@ from surmount.logging import log
 class TradingStrategy(Strategy):
     def __init__(self):
         self.tickers = ["SPY", "QQQ"]
-        self.data_list = [FiveYearBreakevenInflationRate()]
+        self.data_list = [FiveYearBreakevenInflationRate("5year_breakeven_inflation_rate")]
     
     @property
     def interval(self):
