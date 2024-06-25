@@ -22,7 +22,6 @@ class TradingStrategy(Strategy):
     def run(self, data):
         allocation_dict = {ticker: 0.5 for ticker in self.tickers}
         
-        # Get the latest 5-year breakeven inflation rate
         log(str(data.keys()))
         inflation_data = data[("5year_breakeven_inflation_rate",)]
         if not inflation_data:
@@ -32,18 +31,14 @@ class TradingStrategy(Strategy):
         latest_inflation_rate = inflation_data[-1]["value"]
         log(f"Latest 5-year breakeven inflation rate: {latest_inflation_rate}")
         
-        # Define the threshold for high and low inflation
         high_inflation_threshold = 2.0
         low_inflation_threshold = 1.5
-        
-        # Trading logic: Adjust allocation based on inflation rate
+
         if latest_inflation_rate > high_inflation_threshold:
-            # High inflation scenario: More allocation to SPY, less to QQQ
             allocation_dict["SPY"] = 0.7
             allocation_dict["QQQ"] = 0.3
             log("High inflation: Allocating more to SPY")
         elif latest_inflation_rate < low_inflation_threshold:
-            # Low inflation scenario: More allocation to QQQ, less to SPY
             allocation_dict["SPY"] = 0.3
             allocation_dict["QQQ"] = 0.7
             log("Low inflation: Allocating more to QQQ")
