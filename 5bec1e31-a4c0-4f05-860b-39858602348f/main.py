@@ -23,7 +23,7 @@ class TradingStrategy(Strategy):
         allocation_dict = {ticker: 0.5 for ticker in self.tickers}
         
         # Get the latest 5-year breakeven inflation rate
-        log(data)
+        log(str(data))
         inflation_data = data["5year_breakeven_inflation_rate"]
         if not inflation_data:
             log("No inflation data available")
