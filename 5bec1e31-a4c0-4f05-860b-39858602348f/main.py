@@ -5,7 +5,7 @@ from surmount.logging import log
 class TradingStrategy(Strategy):
     def __init__(self):
         self.tickers = ["SPY", "QQQ"]
-        self.data_list = [FiveYearBreakevenInflationRate("5year_breakeven_inflation_rate")]
+        self.data_list = [FiveYearBreakevenInflationRate()]
     
     @property
     def interval(self):
@@ -24,7 +24,7 @@ class TradingStrategy(Strategy):
         
         # Get the latest 5-year breakeven inflation rate
         log(str(data.keys()))
-        inflation_data = data["5year_breakeven_inflation_rate"]
+        inflation_data = data[("5year_breakeven_inflation_rate"),]
         if not inflation_data:
             log("No inflation data available")
             return TargetAllocation(allocation_dict)
