@@ -32,7 +32,7 @@ class TradingStrategy(Strategy):
 
         # Check if we have both RSI and bank loan rate data to proceed
         if "ohlcv" in data and ("bank_prime_loan_rate",) in data:
-            log(data[("bank_prime_loan_rate",))
+            log(str(data[("bank_prime_loan_rate",)))
             # Calculate RSI for the asset
             rsi_values = RSI(self.ticker, data['ohlcv'], length=14)  # Using a common RSI lookback period of 14 days
 
