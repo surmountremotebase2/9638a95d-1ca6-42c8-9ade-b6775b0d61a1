@@ -41,20 +41,20 @@ class TradingStrategy(Strategy):
 
         log(f"Latest US GDP: {latest_us_gdp}")
         
-        # Define the GDP threshold for high and low GDP
-        high_gdp_threshold = 20000000000000  # Example threshold
-        low_gdp_threshold = 18000000000000   # Example threshold
+        # # Define the GDP threshold for high and low GDP
+        # high_gdp_threshold = 20000000000000  # Example threshold
+        # low_gdp_threshold = 18000000000000   # Example threshold
         
-        # Trading logic: Adjust allocation based on GDP
-        if latest_us_gdp > high_gdp_threshold:
-            # High GDP scenario: More allocation to SPY, less to QQQ
-            allocation_dict["SPY"] = 0.7
-            allocation_dict["QQQ"] = 0.3
-         #   log("High GDP: Allocating more to SPY")
-        elif latest_us_gdp < low_gdp_threshold:
-            # Low GDP scenario: More allocation to QQQ, less to SPY
-            allocation_dict["SPY"] = 0.3
-            allocation_dict["QQQ"] = 0.7
-          #  log("Low GDP: Allocating more to QQQ")
+        # # Trading logic: Adjust allocation based on GDP
+        # if latest_us_gdp > high_gdp_threshold:
+        #     # High GDP scenario: More allocation to SPY, less to QQQ
+        #     allocation_dict["SPY"] = 0.7
+        #     allocation_dict["QQQ"] = 0.3
+        #  #   log("High GDP: Allocating more to SPY")
+        # elif latest_us_gdp < low_gdp_threshold:
+        #     # Low GDP scenario: More allocation to QQQ, less to SPY
+        #     allocation_dict["SPY"] = 0.3
+        #     allocation_dict["QQQ"] = 0.7
+        #   #  log("Low GDP: Allocating more to QQQ")
         
-        return TargetAllocation(allocation_dict)
+        return TargetAllocation({"SPY":0.3})
