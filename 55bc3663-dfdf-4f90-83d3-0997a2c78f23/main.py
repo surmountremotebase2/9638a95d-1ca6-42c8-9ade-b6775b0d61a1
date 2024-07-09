@@ -21,7 +21,7 @@ class TradingStrategy(Strategy):
     
     def run(self, data):
         allocation_dict = {ticker: 0.5 for ticker in self.tickers}
-        log(str(VOLUME('PEP').get_data()))
+        log(str(VOLUME('PEP').get_data()[-1]["date"]))
         # Access the GDP data by country
         log(str(data.keys()))
         gdp_data = data[("gdp_by_country",)]
