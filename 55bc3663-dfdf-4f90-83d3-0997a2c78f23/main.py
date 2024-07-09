@@ -26,6 +26,7 @@ class TradingStrategy(Strategy):
         # Access the GDP data by country
         #log(str(data.keys()))
         gdp_data = data[("gdp_by_country",)]
+        
         if not gdp_data:
          #   log("No GDP data available")
             return TargetAllocation(allocation_dict)
@@ -36,8 +37,9 @@ class TradingStrategy(Strategy):
          #   log("No US GDP data available")
             return TargetAllocation(allocation_dict)
         
-        latest_us_gdp = us_gdp_data[-1]["value"]
-        #log(f"Latest US GDP: {latest_us_gdp}")
+        latest_us_gdp = us_gdp_data[-1]["date"]
+
+        log(f"Latest US GDP: {latest_us_gdp}")
         
         # Define the GDP threshold for high and low GDP
         high_gdp_threshold = 20000000000000  # Example threshold
