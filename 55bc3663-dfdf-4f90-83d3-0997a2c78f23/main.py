@@ -1,5 +1,5 @@
 from surmount.base_class import Strategy, TargetAllocation
-from surmount.data import GDPAllCountries
+from surmount.data import *
 from surmount.logging import log
 
 class TradingStrategy(Strategy):
