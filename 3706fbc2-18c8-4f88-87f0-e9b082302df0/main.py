@@ -34,7 +34,7 @@ class TradingStrategy(Strategy):
             condition_0 = (first_value_0[-1] > second_value_0)
         else:
             condition_0 = False
-        first_value_1 = SLOPE(data=data_ohlcv, length=3, ticker="TQQQ")
+        first_value_1 = Slope(data=data_ohlcv, length=3, ticker="TQQQ")
         second_value_1 = 0.0
         if first_value_1 and second_value_1:
             condition_1 = (first_value_1[-1] < second_value_1)
