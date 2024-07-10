@@ -25,7 +25,7 @@ class TradingStrategy(Strategy):
 
     def run(self, data):
         holdings = data["holdings"]
-        data = data["ohlcv"]
+        data_ohlcv = data["ohlcv"]
         log(str(data.keys()))
         resultant = {}
 
