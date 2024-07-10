@@ -6,7 +6,7 @@ from surmount.logging import log
 class TradingStrategy(Strategy):
 
     def __init__(self):
-        self.tickers = ['KO', 'PEP']
+        self.tickers = ['KO', 'PEP','MSFT']
         self.data_list = []
 
     @property
