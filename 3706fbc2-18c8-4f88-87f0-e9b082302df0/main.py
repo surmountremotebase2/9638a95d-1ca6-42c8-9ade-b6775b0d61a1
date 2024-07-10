@@ -63,4 +63,4 @@ class TradingStrategy(Strategy):
             allocation = {}
         resultant = {**resultant, **allocation}
 
-        return TargetAllocation(allocation)
+        return TargetAllocation(resultant)
