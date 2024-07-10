@@ -8,7 +8,7 @@ class TradingStrategy(Strategy):
 
     def __init__(self):
         self.tickers = ['TQQQ', 'AAPL']
-        self.data_list = []
+        self.data_list = [VOLUME()]
 
     @property
     def assets(self):
