@@ -40,8 +40,8 @@ class TradingStrategy(Strategy):
             allocation = {"PEP": 0.25, "KO": 0.75}
         resultant = {**resultant, **allocation}
 
-        first_value_0 = RSI(data=data, ticker="SPY")
-        second_value_0 = RSI(data=data, ticker="MSFT")
+        first_value_0 = RSI(data=data, length = 21, ticker="SPY")
+        second_value_0 = RSI(data=data, length = 21, ticker="MSFT")
         if first_value_0 and second_value_0:
             condition_0 = (first_value_0[-1] > second_value_0[-1])
         else:
