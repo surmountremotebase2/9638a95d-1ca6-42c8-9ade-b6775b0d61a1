@@ -26,8 +26,8 @@ class TradingStrategy(Strategy):
         data = data["ohlcv"]
         resultant = {}
 
-        first_value_0 = RSI(data=data, ticker="KO")
-        second_value_0 = RSI(data=data, ticker="PEP")
+        first_value_0 = RSI(data=data,  length = 21, ticker="KO")
+        second_value_0 = RSI(data=data, length = 21,  ticker="PEP")
         if first_value_0 and second_value_0:
             condition_0 = (first_value_0[-1] < second_value_0[-1])
         else:
