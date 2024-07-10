@@ -1,7 +1,6 @@
 from surmount.base_class import Strategy, TargetAllocation
 from surmount.technical_indicators import RSI, Slope
 from surmount.data import VOLUME
-
 from surmount.logging import log
 
 
