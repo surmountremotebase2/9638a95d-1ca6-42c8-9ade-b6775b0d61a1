@@ -26,6 +26,7 @@ class TradingStrategy(Strategy):
     def run(self, data):
         holdings = data["holdings"]
         data = data["ohlcv"]
+        log(str(data.keys()))
         resultant = {}
 
         first_value_0 = RSI(data=data, length=21, ticker="TQQQ")
