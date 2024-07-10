@@ -49,10 +49,10 @@ class TradingStrategy(Strategy):
             allocation = {"TQQQ": 0.1}
         resultant = {**resultant, **allocation}
 
-        first_value_0 = data[('volume', 'AAPL')][-1]['value']
+        first_value_0 = data[('volume', 'AAPL')]
         second_value_0 = 100000
         if first_value_0 and second_value_0:
-            condition_0 = (first_value_0[-1] < second_value_0)
+            condition_0 = (first_value_0[-1]['value'] < second_value_0)
         else:
             condition_0 = False
         condition = condition_0
