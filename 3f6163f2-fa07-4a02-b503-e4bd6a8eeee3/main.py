@@ -1,6 +1,7 @@
 from surmount.base_class import Strategy, TargetAllocation
-from surmount.technical_indicators import RSI, Slope
+from surmount.technical_indicators import RSI, SLOPE
 from surmount.data import VOLUME
+
 from surmount.logging import log
 
 
@@ -8,7 +9,7 @@ class TradingStrategy(Strategy):
 
     def __init__(self):
         self.tickers = ['TQQQ', 'AAPL']
-        self.data_list = [VOLUME()]
+        self.data_list = [VOLUME('AAPL')]
 
     @property
     def assets(self):
@@ -33,7 +34,7 @@ class TradingStrategy(Strategy):
             condition_0 = (first_value_0[-1] > second_value_0)
         else:
             condition_0 = False
-        first_value_1 = Slope(data=data, length=3, ticker="TQQQ")
+        first_value_1 = SLOPE(data=data, length=3, ticker="TQQQ")
         second_value_1 = 0
         if first_value_1 and second_value_1:
             condition_1 = (first_value_1[-1] < second_value_1)
