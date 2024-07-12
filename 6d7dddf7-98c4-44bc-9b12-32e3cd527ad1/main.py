@@ -40,8 +40,7 @@ class TradingStrategy(Strategy):
         else:
             condition_1 = False
         condition = condition_0 and condition_1
-        log("First Condition")
-        log(str(condition))
+
         if condition:
             allocation = {"TQQQ": 1.0}
         else:
@@ -55,7 +54,8 @@ class TradingStrategy(Strategy):
         else:
             condition_0 = True
         condition = condition_0
-
+        log("Second Condition")
+        log(str(condition))
         if condition:
             allocation = {"AAPL": 0.5, "TQQQ": 0.5}
         else:
