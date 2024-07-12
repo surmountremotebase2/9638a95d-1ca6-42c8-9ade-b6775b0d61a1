@@ -52,7 +52,7 @@ class TradingStrategy(Strategy):
         if first_value_0 and second_value_0:
             condition_0 = (first_value_0 < second_value_0)
         else:
-            condition_0 = False
+            condition_0 = True
         condition = condition_0
 
         if condition:
