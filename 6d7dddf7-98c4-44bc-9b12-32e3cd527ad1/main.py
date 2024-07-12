@@ -1,25 +1,66 @@
 from surmount.base_class import Strategy, TargetAllocation
-from surmount.technical_indicators import RSI, EMA, SMA
+from surmount.technical_indicators import Slope, RSI
+from surmount.data import VOLUME
 from surmount.logging import log
 
+
 class TradingStrategy(Strategy):
+
     def __init__(self):
-        # Only trading with "USO" ETF
-        self.ticker = "SPY"
+        self.tickers = 1day
+        self.data_list = [VOLUME('AAPL')]
 
     @property
     def assets(self):
-        # Defines the asset to trade
-        return [self.ticker]
+        return self.tickers
+
+    @property
+    def data(self):
+        return self.data_list
 
     @property
     def interval(self):
-        # Sets the strategy to run on daily data
-        return "1day"
+        return "['TQQQ', 'AAPL']"
 
     def run(self, data):
-        # The trading logic goes here
-        uso_allocation = 1.0
+        holdings = data["holdings"]
+        data_ohlcv = data["ohlcv"]
+        resultant = {}
 
-        # Return the allocation object with the calculated allocation
-        return TargetAllocation({self.ticker: uso_allocation})
+        first_value_0 = RSI(data=data_ohlcv, length=21, ticker="TQQQ")
+        second_value_0 = 50.0
+        if first_value_0 and second_value_0:
+            condition_0 = (first_value_0[-1] > second_value_0)
+        else:
+            condition_0 = False
+        first_value_1 = Slope(data=data_ohlcv, length=3, ticker="TQQQ")
+        second_value_1 = 0.0
+        if first_value_1 and second_value_1:
+            condition_1 = (first_value_1[-1] < second_value_1)
+        else:
+            condition_1 = False
+        condition = condition_0 and condition_1
+
+        if condition:
+            allocation = {"TQQQ": 1.0}
+        else:
+            allocation = {"TQQQ": 0.1}
+        resultant = {**resultant, **allocation}
+
+        first_value_0 = data[('volume', 'AAPL')][-1]['value']
+        second_value_0 = 100000.0
+        if first_value_0 and second_value_0:
+            condition_0 = (first_value_0 < second_value_0)
+        else:
+            condition_0 = False
+        condition = condition_0
+
+        if condition:
+            allocation = {"AAPL": 0.5, "TQQQ": 0.5}
+        else:
+            allocation = {}
+        resultant = {**resultant, **allocation}
+
+        log(f"Allocating {resultant}")
+
+        return TargetAllocation(resultant)
