@@ -50,12 +50,14 @@ class TradingStrategy(Strategy):
         first_value_0 = data[('volume', 'AAPL')][-1]['value']
         second_value_0 = 100000.0
         if first_value_0 and second_value_0:
+            log(str(first_value_0))
+            log(str(second_value_0))
             condition_0 = (first_value_0 < second_value_0)
         else:
             condition_0 = True
         condition = condition_0
-        log("Second Condition")
-        log(str(condition))
+        # log("Second Condition")
+        # log(str(condition))
         if condition:
             allocation = {"AAPL": 0.5, "TQQQ": 0.5}
         else:
