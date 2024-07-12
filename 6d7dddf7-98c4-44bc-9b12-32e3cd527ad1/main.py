@@ -7,7 +7,7 @@ from surmount.logging import log
 class TradingStrategy(Strategy):
 
     def __init__(self):
-        self.tickers = "1day"
+        self.tickers = ['TQQQ', 'AAPL']
         self.data_list = [VOLUME('AAPL')]
 
     @property
@@ -20,7 +20,7 @@ class TradingStrategy(Strategy):
 
     @property
     def interval(self):
-        return "['TQQQ', 'AAPL']"
+        return "1day"
 
     def run(self, data):
         holdings = data["holdings"]
