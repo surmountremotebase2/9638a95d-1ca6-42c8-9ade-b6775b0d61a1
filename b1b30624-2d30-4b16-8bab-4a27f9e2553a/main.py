@@ -18,11 +18,3 @@ class TradingStrategy(Strategy):
 
     def run(self, data):
         return {'FAZ': 1}
-
-from datetime import datetime
-
-start = datetime.strptime("2024-06-08", '%Y-%m-%d')
-end = datetime.strptime("2024-07-08", '%Y-%m-%d')
-a = backtest(TradingStrategy(), start, end, 10000)
-
-print(a['stats'])
