@@ -1,4 +1,4 @@
-from surmount.base_class import Strategy, TargetAllocation
+from surmount.base_class import Strategy
 from surmount.logging import log
 from surmount.data import Asset 
 
