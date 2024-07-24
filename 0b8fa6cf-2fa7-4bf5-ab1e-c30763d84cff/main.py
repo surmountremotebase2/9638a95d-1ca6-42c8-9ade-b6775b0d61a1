@@ -16,4 +16,4 @@ class TradingStrategy(Strategy):
         return "1day"
 
     def run(self, data):
-        return {'GME': 1}
+        return {'AAPL': 0.5, 'GME': 0.5}
