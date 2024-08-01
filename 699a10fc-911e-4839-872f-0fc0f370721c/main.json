@@ -1,1 +1,1 @@
-{"allocations": {"VTI": 50, "WMT": 50}, "frequency": 30, "name": "", "period": "days"}
+{"allocations": {"VTI": 20, "WMT": 20, "AMZN": 20, "META": 20, "NVDA": 20}, "frequency": 30, "name": "", "period": "days"}
