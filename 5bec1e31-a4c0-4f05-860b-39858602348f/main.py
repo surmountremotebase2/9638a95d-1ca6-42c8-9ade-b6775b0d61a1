@@ -1,7 +1,7 @@
 
 from surmount.base_class import Strategy, TargetAllocation
 from surmount.technical_indicators import RSI
-from surmount.data import BankPrimeLoanRate
+from surmount.data import BankPrimeLoanRate,CboeNasdaqHundredVolatilityIndex
 from surmount.logging import log
 
 class TradingStrategy(Strategy):
