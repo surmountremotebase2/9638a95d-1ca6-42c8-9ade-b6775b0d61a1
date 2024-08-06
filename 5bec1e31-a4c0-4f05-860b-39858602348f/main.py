@@ -9,7 +9,7 @@ class TradingStrategy(Strategy):
         # Defining our asset of interest
         self.ticker = "SPY"
         # Define the data sources we need: Bank Prime Loan Rate and historical data for our asset
-        self.data_list = [CboeNasdaqHundredVolatilityIndex()]
+        self.data_list = [BankPrimeLoanRate(), CboeNasdaqHundredVolatilityIndex()]
 
     @property
     def interval(self):
