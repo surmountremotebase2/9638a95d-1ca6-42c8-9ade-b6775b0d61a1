@@ -6,7 +6,7 @@ class TradingStrategy(Strategy):
     def __init__(self):
         self.tickers = ["SPY", "QQQ"]
         self.data_list = [GDPAllCountries()]
-    
+    # my gdp
     @property
     def interval(self):
         return "1day"
