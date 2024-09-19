@@ -1,6 +1,7 @@
 from surmount.base_class import Strategy, TargetAllocation
 from surmount.logging import log
 from surmount.data import Asset, InstitutionalOwnership
+
 import pandas_ta as ta
 import pandas as pd
 
