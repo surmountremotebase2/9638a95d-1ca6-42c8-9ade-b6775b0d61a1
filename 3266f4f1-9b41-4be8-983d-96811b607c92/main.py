@@ -3,6 +3,7 @@ from surmount.technical_indicators import BB
 from surmount.logging import log
 
 
+
 class TradingStrategy(Strategy):
     @property
     def assets(self):
