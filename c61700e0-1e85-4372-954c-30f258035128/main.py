@@ -6,6 +6,7 @@ import pandas_ta as ta
 import pandas as pd
 
 def SMAVol(ticker, data, length):
+   
    '''Calculate the moving average of trading volume
 
    :param ticker: a string ticker
