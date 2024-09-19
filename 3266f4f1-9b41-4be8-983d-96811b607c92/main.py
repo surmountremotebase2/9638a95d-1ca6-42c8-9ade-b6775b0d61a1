@@ -5,6 +5,7 @@ from surmount.logging import log
 
 
 
+
 class TradingStrategy(Strategy):
     @property
     def assets(self):
