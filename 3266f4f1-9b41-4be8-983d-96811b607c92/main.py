@@ -16,6 +16,7 @@ class TradingStrategy(Strategy):
     def interval(self):
         return "1day"
 
+
     def run(self, data):
         holdings = data["holdings"]
         data = data["ohlcv"]
