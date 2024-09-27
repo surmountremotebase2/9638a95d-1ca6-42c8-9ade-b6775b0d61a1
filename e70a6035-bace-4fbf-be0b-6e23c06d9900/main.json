@@ -1,1 +1,1 @@
-{"interval": "", "assets": ["AMZN", "SHOP"], "strategy": []}
+{"interval": "1day", "assets": ["AMZN", "SHOP", "AAPL", "V"], "strategy": [{"type": "IF", "conditions": [{"type": "BINARY", "first": {"name": "RSI", "args": {"ticker": "AMZN", "length": 21}, "advanced": {}}, "second": {"name": "RSI", "args": {"length": 21, "ticker": "SHOP"}}, "comp": ">", "operator": ""}], "if_action": {"type": "ACTION", "steps": [{"action": "allocation", "asset": null}]}, "else_action": {"type": "ACTION", "steps": []}}]}
