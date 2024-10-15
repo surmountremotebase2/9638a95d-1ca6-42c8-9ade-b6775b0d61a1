@@ -5,8 +5,8 @@ from surmount.logging import log
 class TradingStrategy(Strategy):
     @property
     def assets(self):
-        # Strategy applies to gcusd
-        return ["gcusd"]
+        # Strategy applies to MSFT
+        return ["MSFT"]
 
     @property
     def interval(self):
@@ -17,7 +17,7 @@ class TradingStrategy(Strategy):
         data = data["ohlcv"]
         
         #for i in range(len(data)):
-        #    data[i]["gcusd"]["open"] = data[i]["gcusd"]["close"]
+        #    data[i]["MSFT"]["open"] = data[i]["MSFT"]["close"]
         
       
         if len(data) < 12:
@@ -25,19 +25,19 @@ class TradingStrategy(Strategy):
             # log("Not enough data to calculate Bollinger Bands")
             return TargetAllocation({})
 
-        gcusd_stake = holdings.get("gcusd", 0)
-        gcusd_bbands = BB("gcusd", data, 12, 1.5)
-        current_price = data[-1]["gcusd"]['close']  # Current price of gcusd
+        MSFT_stake = holdings.get("MSFT", 0)
+        MSFT_bbands = BB("MSFT", data, 12, 1.5)
+        current_price = data[-1]["MSFT"]['close']  # Current price of MSFT
 
-        # log(f" {current_price}  {gcusd_bbands['lower'][-1]}   {gcusd_bbands['mid'][-1]}")
+        # log(f" {current_price}  {MSFT_bbands['lower'][-1]}   {MSFT_bbands['mid'][-1]}")
 
         # Buying condition: the price falls below the lower Bollinger Band
-        if gcusd_stake ==0 and current_price < gcusd_bbands['lower'][-1]:
-            # log(f"Buying gcusd - price below lower Bollinger Band. Current price: {current_price}")
-            gcusd_stake = 1  # Buy gcusd
+        if MSFT_stake ==0 and current_price < MSFT_bbands['lower'][-1]:
+            # log(f"Buying MSFT - price below lower Bollinger Band. Current price: {current_price}")
+            MSFT_stake = 1  # Buy MSFT
         # Selling condition: the price moves above the middle Bollinger Band
-        if gcusd_stake >0 and current_price > gcusd_bbands['mid'][-1]:
-            # log(f"Closing gcusd - price above middle Bollinger Band. Current price: {current_price}")
-            gcusd_stake = 0  # Exit position in gcusd
+        if MSFT_stake >0 and current_price > MSFT_bbands['mid'][-1]:
+            # log(f"Closing MSFT - price above middle Bollinger Band. Current price: {current_price}")
+            MSFT_stake = 0  # Exit position in MSFT
 
-        return TargetAllocation({"gcusd": gcusd_stake})
+        return TargetAllocation({"MSFT": MSFT_stake})
