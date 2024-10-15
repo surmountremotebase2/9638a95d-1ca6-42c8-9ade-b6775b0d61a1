@@ -6,7 +6,7 @@ class TradingStrategy(Strategy):
 
    @property
    def assets(self):
-      return ["ORCL"]
+      return ["RBLX"]
 
    @property
    def interval(self):
@@ -15,10 +15,10 @@ class TradingStrategy(Strategy):
    def run(self, data):
       d = data["ohlcv"]
       qqq_stake = 0
-      if len(d)>3 and "13:00" in d[-1]["ORCL"]["date"]:
-         v_shape = d[-2]["ORCL"]["close"]<d[-3]["ORCL"]["close"] and d[-1]["ORCL"]["close"]>d[-2]["ORCL"]["close"]
+      if len(d)>3 and "13:00" in d[-1]["RBLX"]["date"]:
+         v_shape = d[-2]["RBLX"]["close"]<d[-3]["RBLX"]["close"] and d[-1]["RBLX"]["close"]>d[-2]["RBLX"]["close"]
          log(str(v_shape))
          if v_shape:
             qqq_stake = 1
 
-      return TargetAllocation({"ORCL": qqq_stake})
+      return TargetAllocation({"RBLX": qqq_stake})
