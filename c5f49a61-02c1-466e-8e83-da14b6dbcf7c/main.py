@@ -6,7 +6,7 @@ class TradingStrategy(Strategy):
 
    @property
    def assets(self):
-      return ["SCHO"]
+      return ["NOK"]
 
    @property
    def interval(self):
@@ -15,10 +15,12 @@ class TradingStrategy(Strategy):
    def run(self, data):
       d = data["ohlcv"]
       qqq_stake = 0
-      if len(d)>3 and "13:00" in d[-1]["SCHO"]["date"]:
-         v_shape = d[-2]["SCHO"]["close"]<d[-3]["SCHO"]["close"] and d[-1]["SCHO"]["close"]>d[-2]["SCHO"]["close"]
+      if len(d)>3 and "13:00" in d[-1]["NOK"]["date"]:
+         v_shape = d[-2]["NOK"]["close"]<d[-3]["NOK"]["close"] and d[-1]["NOK"]["close"]>d[-2]["NOK"]["close"]
          log(str(v_shape))
          if v_shape:
             qqq_stake = 1
+      else:
+         log("zero allocation")
 
-      return TargetAllocation({"SCHO": qqq_stake})
+      return TargetAllocation({"NOK": qqq_stake})
