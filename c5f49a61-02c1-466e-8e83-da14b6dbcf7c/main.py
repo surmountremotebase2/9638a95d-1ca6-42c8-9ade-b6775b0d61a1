@@ -10,7 +10,7 @@ class TradingStrategy(Strategy):
 
    @property
    def interval(self):
-      return "1min"
+      return "5min"
 
    def run(self, data):
       d = data["ohlcv"]
