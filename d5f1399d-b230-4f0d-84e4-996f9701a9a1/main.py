@@ -1,3 +1,4 @@
+from surmount.base_class import Strategy, TargetAllocation, backtest
 from surmount.technical_indicators import MACD, RSI, EMA
 from surmount.logging import log
 import pandas as pd
