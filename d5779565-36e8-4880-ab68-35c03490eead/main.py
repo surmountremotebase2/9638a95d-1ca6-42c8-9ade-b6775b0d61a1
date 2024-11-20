@@ -6,7 +6,7 @@ class TradingStrategy(Strategy):
     @property
     def assets(self):
         # Strategy applies to gcusd
-        return ["gcusd"]
+        return ["SPY"]
 
     @property
     def interval(self):
