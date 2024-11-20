@@ -1,5 +1,4 @@
 from surmount.base_class import Strategy, TargetAllocation
-from surmount.technical_indicators import BB
 from surmount.logging import log
 
 class TradingStrategy(Strategy):
