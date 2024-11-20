@@ -3,7 +3,8 @@ from surmount.logging import log
 
 class TradingStrategy(Strategy):
     @property
-    def assets(self)        return ["SPY"]
+    def assets(self):
+        return ["SPY"]
 
     @property
     def interval(self):
