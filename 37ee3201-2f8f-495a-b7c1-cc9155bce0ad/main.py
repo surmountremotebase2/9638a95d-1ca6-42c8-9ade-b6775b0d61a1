@@ -3,7 +3,7 @@ from surmount.base_class import Strategy, TargetAllocation
 class TradingStrategy(Strategy):
     @property
     def assets(self):
-        return ["SPY"]
+        return ["GOOGL"]
 
     @property
     def interval(self):
@@ -13,4 +13,4 @@ class TradingStrategy(Strategy):
         holdings = data["holdings"]
         data = data["ohlcv"]
   
-        return TargetAllocation({"SPY": -0.5})
+        return TargetAllocation({"GOOGL": -0.5})
