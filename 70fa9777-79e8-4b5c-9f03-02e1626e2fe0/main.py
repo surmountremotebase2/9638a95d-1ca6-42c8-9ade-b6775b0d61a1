@@ -22,4 +22,6 @@ class TradingStrategy(Strategy):
     def run(self, data):
         # Assuming 'data' parameter contains a dictionary with OHLCV data for each ticker
         # Key format is expected to be ("ohlcv", ticker)
+        log(str(data))
         spy_data = data.get(("ohlcv", "SPY"), [])
+        
