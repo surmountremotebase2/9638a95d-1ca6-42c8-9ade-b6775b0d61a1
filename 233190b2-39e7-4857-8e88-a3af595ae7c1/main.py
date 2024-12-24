@@ -44,4 +44,4 @@ class TradingStrategy(Strategy):
     def run(self, data):
         # Ensure we have at least one bar of data
         if len(data["ohlcv"]) < 1:
-            return TargetAllocation({})
+            return TargetAllocation({QQQ:0.5})
