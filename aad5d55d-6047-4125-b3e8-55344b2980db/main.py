@@ -5,7 +5,7 @@ from surmount.logging import log
 class TradingStrategy(Strategy):
     @property
     def assets(self):
-        return ["gcusd"]
+        return ["AAPL"]
 
     @property
     def interval(self):
@@ -15,4 +15,4 @@ class TradingStrategy(Strategy):
         holdings = data["holdings"]
         data = data["ohlcv"]
 
-        return TargetAllocation({"gcusd": gcusd_stake})
+        return TargetAllocation({"AAPL": aapl_stake})
