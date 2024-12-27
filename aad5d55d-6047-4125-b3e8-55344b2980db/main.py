@@ -14,5 +14,5 @@ class TradingStrategy(Strategy):
     def run(self, data):
         holdings = data["holdings"]
         data = data["ohlcv"]
-
+        aapl_stake = 0.5
         return TargetAllocation({"AAPL": aapl_stake})
