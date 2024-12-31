@@ -1,6 +1,7 @@
+
 from surmount.base_class import Strategy, TargetAllocation
 from surmount.data import GDPAllCountries, CivilianUnemployment
-from surmount.logging import log
+from surmount.logging
 
 class TradingStrategy(Strategy):
     def __init__(self):
@@ -32,7 +33,7 @@ class TradingStrategy(Strategy):
             latest_gdp_growth = gdp_data[-1]["value"] - gdp_data[-2]["value"]
             latest_unemployment_change = unemployment_data[-1]["value"] - unemployment_data[-2]["value"]
 
-            # GDP is growing, and unemployment is stable or decreasing, buy AAPL
+            # GDP is growing, and stable or decreasing, buy AAPL
             if latest_gdp_growth > 0 and latest_unemployment_change <= 0:
                 allocation_dict["AAPL"] = 1  # Full allocation to AAPL
             # If unemployment rises, sell AAPL (or avoid buying)
