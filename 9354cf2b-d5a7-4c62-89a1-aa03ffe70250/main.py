@@ -26,6 +26,7 @@ class TradingStrategy(Strategy):
     def run(self, data):
         allocation_dict = {"AAPL": 0}  # Default to no position
         gdp_data = data[("gdp_by_country",)]
+        log(gdp_data)
         unemployment_data = data[("civilian_unemployment",)]
         log("start")
         log(f"{len(gdp_data)}")
