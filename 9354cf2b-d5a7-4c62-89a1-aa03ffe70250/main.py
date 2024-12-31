@@ -30,6 +30,7 @@ class TradingStrategy(Strategy):
         log("start")
         log(f"{len(gdp_data)}")
         log(f"{len(unemployment_data)}")
+        log("end")
 
         # Determine the recent trends in GDP and Unemployment Rate
         if len(gdp_data) > 1 and len(unemployment_data) > 1:
