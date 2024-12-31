@@ -27,7 +27,7 @@ class TradingStrategy(Strategy):
         allocation_dict = {"AAPL": 0}  # Default to no position
         gdp_data = data[("gdp_by_country",)]
         unemployment_data = data[("civilian_unemployment",)]
-
+        log("start")
         log(f"{len(gdp_data)}")
         log(f"{len(unemployment_data)}")
 
