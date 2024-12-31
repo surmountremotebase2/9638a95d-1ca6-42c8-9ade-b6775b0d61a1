@@ -28,6 +28,7 @@ class TradingStrategy(Strategy):
         allocation_dict = {"AAPL": 0}  # Default to no position
         gdp_data = data[("gdp_by_country",)]
         unemployment_data = data[("civilian_unemployment",)]
+        
 
         # Determine the recent trends in GDP and Unemployment Rate
         if len(gdp_data) > 1 and len(unemployment_data) > 1:
