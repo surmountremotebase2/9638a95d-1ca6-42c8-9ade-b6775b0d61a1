@@ -18,7 +18,7 @@ class TradingStrategy(Strategy):
         return self.tickers
     @property
     def interval(self):
-        return "1day"
+        return "1hour"
    
 
     def run(self, data):
