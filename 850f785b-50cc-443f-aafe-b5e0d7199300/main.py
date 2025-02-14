@@ -3,6 +3,10 @@ from surmount.technical_indicators import BB
 from surmount.logging import log
 
 class TradingStrategy(Strategy):
+
+    def __init__(self):
+        self.count = 0
+
     @property
     def assets(self):
         return ["gcusd"]
