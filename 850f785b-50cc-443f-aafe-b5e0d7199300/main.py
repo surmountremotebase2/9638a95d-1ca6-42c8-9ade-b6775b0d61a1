@@ -25,4 +25,4 @@ class TradingStrategy(Strategy):
             target_allocation = 0
         
     
-        return TargetAllocation({"AAPL": gcusd_stake})
+        return TargetAllocation({"SHOP": gcusd_stake})
