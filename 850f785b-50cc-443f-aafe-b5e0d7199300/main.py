@@ -24,5 +24,6 @@ class TradingStrategy(Strategy):
         else:
             target_allocation = 0
         
+        self.count += 1
     
         return TargetAllocation({"SHOP": target_allocation})
