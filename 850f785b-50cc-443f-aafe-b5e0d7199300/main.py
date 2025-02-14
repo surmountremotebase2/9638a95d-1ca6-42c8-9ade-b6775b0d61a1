@@ -9,15 +9,20 @@ class TradingStrategy(Strategy):
 
     @property
     def assets(self):
-        return ["gcusd"]
+        return ["AAPL"]
 
     @property
     def interval(self):
-        return "1day"
+        return "5min"
 
     def run(self, data):
         holdings = data["holdings"]
         data = data["ohlcv"]
+        
+        if self.count % 2 == 0:
+            target_allocation = 1
+        else:
+            target_allocation = 0
         
     
         return TargetAllocation({"gcusd": gcusd_stake})
