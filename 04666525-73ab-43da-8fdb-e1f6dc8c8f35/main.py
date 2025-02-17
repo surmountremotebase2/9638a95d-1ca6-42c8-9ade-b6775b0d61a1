@@ -1,1 +1,1 @@
-#Type code here
+from surmount.data import InsiderTrading
