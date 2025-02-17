@@ -1,7 +1,7 @@
 from surmount.base_class import Strategy, TargetAllocation, backtest
 from surmount.technical_indicators import SMA, BB
 from surmount.logging import log
-from surmount.data import InsiderTrading
+from surmount.data import CryptoAltRanking
 
 class TradingStrategy(Strategy):
 
