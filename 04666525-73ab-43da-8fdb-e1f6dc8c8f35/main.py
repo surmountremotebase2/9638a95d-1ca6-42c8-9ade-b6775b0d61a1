@@ -50,12 +50,3 @@ class TradingStrategy(Strategy):
             log(f"Latest GDP Growth: {latest_gdp_growth}, Latest Unemployment Change: {latest_unemployment_change}")
 
         return TargetAllocation(allocation_dict)
-
-
-from datetime import datetime
-
-start = datetime.strptime("2020-10-16", '%Y-%m-%d')
-end = datetime.strptime("2023-11-16", '%Y-%m-%d')
-a = backtest(TradingStrategy(), start, end, fees=0.1, initial_capital=1000)
-
-print(a['stats'])
