@@ -1,53 +1,61 @@
+
 from surmount.base_class import Strategy, TargetAllocation, backtest
-from surmount.technical_indicators import SMA, BB
+from surmount.data import GDPAllCountries, CivilianUnemployment, CryptoAltRanking
 from surmount.logging import log
-from surmount.data import CryptoAltRanking
 
 class TradingStrategy(Strategy):
+    def __init__(self):
+        self.tickers = ["AAPL"]
+        # Add GDP and Unemployment data to the data_list
+        self.data_list = [GDPAllCountries(), CivilianUnemployment(), CryptoAltRanking()]
 
-   def __init__(self):
-      self.data_list = [InsiderTrading("AAPL")]
+    @property
+    def interval(self):
+        # Use daily data as economic indicators do not update more frequently
+        return "1day"
 
-   @property
-   def assets(self):
-      return ["QQQ", "SQQQ"]
+    @property
+    def assets(self):
+        # We are only trading AAPL based on economic indicators
+        return self.tickers
 
-   @property
-   def interval(self):
-      return "1hour"
+    @property
+    def data(self):
+        return self.data_list
 
-   @property
-   def data(self):
-      return self.data_list
+    def run(self, data):
+        allocation_dict = {"AAPL": 0}  # Default to no position
+        gdp_data = data[("gdp_by_country",)]
+        unemployment_data = data[("civilian_unemployment",)]
+        alt_ranking_data = data[("crypto_alt_ranking",)]
+        log(f"here: {str(data)}")
+        print(f"here: {str(data.keys())}")
+        print(f"gdp: {str(len(gdp_data))}")
+        print(f"unemployment_data: {str(len(unemployment_data))}")
+        print(f"alt_ranking_data: {str(alt_ranking_data)}")
 
-   def run(self, data):
-      holdings = data["holdings"]
-      data = data["ohlcv"]
 
-      sqqq_stake = 0
-      qqq_stake = 0
+        # Determine the recent trends in GDP and Unemployment Rate
+        if len(gdp_data) > 1 and len(unemployment_data) > 1:
+            latest_gdp_growth = gdp_data[-1]["value"] - gdp_data[-2]["value"]
+            latest_unemployment_change = unemployment_data[-1]["value"] - unemployment_data[-2]["value"]
 
-      qqq_bbands = BB("QQQ", data, 20, 1.4)
-      qqq_ma = SMA("QQQ", data, 5)
+            # GDP is growing, and stable or decreasing, buy AAPL
+            if latest_gdp_growth > 0 and latest_unemployment_change <= 0:
+                allocation_dict["AAPL"] = 1  # Full allocation to AAPL
+            # If unemployment rises, sell AAPL (or avoid buying)
+            elif latest_unemployment_change > 0:
+                allocation_dict["AAPL"] = 0  # No position in AAPL
+                
+            log(f"Latest GDP Growth: {latest_gdp_growth}, Latest Unemployment Change: {latest_unemployment_change}")
 
-      if len(data)<20:
-         return TargetAllocation({})
+        return TargetAllocation(allocation_dict)
 
-      current_price = data[-1]["QQQ"]['close']
 
-      if qqq_bbands is not None and current_price < qqq_bbands['lower'][-1] and qqq_ma[-1]>qqq_ma[-2]:
-         if holdings["QQQ"] >= 0:
-            qqq_stake = min(1, holdings["QQQ"]+0.1)
-         else:
-            qqq_stake = 0.4
-      elif qqq_bbands is not None and current_price > qqq_bbands['upper'][-1]:
-         if holdings["SQQQ"] >= 0:
-            sqqq_stake = min(1, holdings["SQQQ"]+0.075)
-         else:
-            sqqq_stake = 0.2
-      else:
-         qqq_stake = 0
-         sqqq_stake = 0
+from datetime import datetime
 
-      return TargetAllocation({"SQQQ": 0.5, "QQQ": 0.5})
-   
+start = datetime.strptime("2020-10-16", '%Y-%m-%d')
+end = datetime.strptime("2023-11-16", '%Y-%m-%d')
+a = backtest(TradingStrategy(), start, end, fees=0.1, initial_capital=1000)
+
+print(a['stats'])
