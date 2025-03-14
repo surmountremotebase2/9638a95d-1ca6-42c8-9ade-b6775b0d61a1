@@ -16,4 +16,4 @@ class TradingStrategy(Strategy):
         data = data["ohlcv"]
         
 
-        return TargetAllocation({"AAPL": gcusd_stake})
+        return TargetAllocation({"AAPL": 1})
