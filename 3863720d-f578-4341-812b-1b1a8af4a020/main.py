@@ -26,4 +26,4 @@ class TradingStrategy(Strategy):
         
         self.count += 1
     
-        return TargetAllocation({"SHOP": target_allocation})
+        return TargetAllocation({"AMZN": target_allocation})
