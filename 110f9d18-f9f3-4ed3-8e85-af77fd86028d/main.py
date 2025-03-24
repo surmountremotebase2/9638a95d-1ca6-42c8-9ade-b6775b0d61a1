@@ -3,6 +3,7 @@ from surmount.data import Asset
 from surmount.logging import log
 from datetime import datetime,timedelta
 import pandas as pd
+
 class TradingStrategy(Strategy):
     def __init__(self): # 1x 7or7 to Dur 2x 7or3 to Dur  3x 3or3 to Dur  4x 7orDur/4 to Dur
         self.dur = 21080;self.debug = 0;self.adj_ma = 1; self.adj_bollinger=0.01*0  #self.adj_ma = 1; self.adj_bollinger=0.04
