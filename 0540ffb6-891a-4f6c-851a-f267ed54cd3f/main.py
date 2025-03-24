@@ -1,4 +1,5 @@
 # SMABL44 0 daily XX-23060 QMCO-SMMT-0000-0000
+
 from surmount.base_class import Strategy, TargetAllocation
 from surmount.data import Asset
 from surmount.logging import log
