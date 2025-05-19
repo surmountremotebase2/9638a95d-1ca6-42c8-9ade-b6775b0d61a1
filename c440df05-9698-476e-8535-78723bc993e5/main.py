@@ -31,7 +31,7 @@ class TradingStrategy(Strategy):
         active_stocks = data[("top_active_stocks",)]    
         tickers = [stock["ticker"] for stock in active_stocks]
         log(str(tickers))
-             
+        allocation_dict = {"AAPL":0.5, "NVDA": 0.5}
 
         return TargetAllocation(allocation_dict)
 
