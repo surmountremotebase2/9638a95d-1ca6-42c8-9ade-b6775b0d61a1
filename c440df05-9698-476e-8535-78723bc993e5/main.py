@@ -10,7 +10,7 @@ class TradingStrategy(Strategy):
         self.data_list = [
             TopActiveStocks(),
         ]
-        self.tickers = []  # Will be populated dynamically
+        self.tickers = []
 
     @property
     def interval(self):
