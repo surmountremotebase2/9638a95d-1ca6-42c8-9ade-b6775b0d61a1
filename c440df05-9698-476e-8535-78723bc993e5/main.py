@@ -110,8 +110,8 @@ class TradingStrategy(Strategy):
             for ticker in tickers:
                 allocation_dict[ticker] = weight
 
-        print(f"Final allocations: {allocation_dict}")
-        print(f"MedianCPI change: {median_cpi_change if len(median_cpi) > 1 else 'N/A'}")
-        print(f"Inflation score: {inflation_score}")
+        log(f"Final allocations: {allocation_dict}")
+        log(f"MedianCPI change: {median_cpi_change if len(median_cpi) > 1 else 'N/A'}")
+        log(f"Inflation score: {inflation_score}")
         return TargetAllocation(allocation_dict)
 
