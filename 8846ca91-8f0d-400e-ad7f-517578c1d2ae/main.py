@@ -2,7 +2,7 @@ from surmount.base_class import Strategy, TargetAllocation, backtest
 from surmount.data import CryptoAltRanking
 from surmount.logging import log
 
-class SimpleCryptoStrategy(Strategy):
+class TradingStrategy(Strategy):
     def __init__(self):
         # Add CryptoAltRanking as a data source
         self.data_list = [CryptoAltRanking()]
