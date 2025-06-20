@@ -25,5 +25,5 @@ class TradingStrategy(Strategy):
         crypto_rankings = data[("crypto_alt_ranking",)]    
         asset = crypto_rankings[-1]['alt_ranking'][0]   
         log(f"Trading: {crypto_rankings[-1]}")
-        return TargetAllocation({asset;1})
+        return TargetAllocation({asset:1})
 
