@@ -22,7 +22,7 @@ class TradingStrategy(Strategy):
 
     def run(self, data):
         # Get crypto alt ranking data
-        crypto_rankings = data[("crypto_alt_ranking",)]        
-        log(f"Trading: {crypto_rankings}")
+        crypto_rankings = data[("crypto_alt_ranking",)]       
+        log(f"Trading: {crypto_rankings[0]}")
         return TargetAllocation(allocation)
 
