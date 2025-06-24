@@ -1,1 +1,1 @@
-{"allocations": {"MSFT": 10, "AAPL": 10}, "frequency": 30, "name": "", "period": "days"}
+{"allocations": {"MSFT": 10.0, "AAPL": 90.0}, "frequency": 30, "name": "", "period": "days"}
