@@ -15,8 +15,6 @@ class TradingStrategy(Strategy):
     @property
     def assets(self):
         return self.tickers
-
-
     @property
     def data(self):
         return self.data_list
