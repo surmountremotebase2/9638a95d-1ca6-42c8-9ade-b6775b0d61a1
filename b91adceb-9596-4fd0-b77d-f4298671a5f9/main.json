@@ -1,1 +1,1 @@
-{"interval": "", "assets": ["NVDA", "MSFT"], "strategy": []}
+{"groups": {}, "interval": "1hour", "assets": ["NVDA", "MSFT"], "strategy": [{"type": "IF", "conditions": [{"type": "BINARY", "first": {"name": "TP", "args": {"ticker": "NVDA"}}, "second": {"name": "constant", "args": {"length": "10", "ticker": "NVDA", "value": "100"}}, "comp": ">", "operator": ""}], "if_action": {"type": "ACTION", "steps": [{"action": "allocation", "asset": "MSFT", "amount": 100}]}, "else_action": {"type": "ACTION", "steps": [{"action": "allocation", "asset": "NVDA", "amount": 100}]}}]}
