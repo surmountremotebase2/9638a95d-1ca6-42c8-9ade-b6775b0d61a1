@@ -24,7 +24,7 @@ class TradingStrategy(Strategy):
     def run(self, data):
         # Get crypto alt ranking data
         median_cpi = data[("median_cpi",)]
-        log(median_cpi)
+        log(str(median_cpi))
         # crypto_rankings = data[("crypto_alt_ranking",)]    
         # asset = next(iter(crypto_rankings[-1]['alt_ranking'])) + "USD"   
         # log(f"Trading: {asset}")
