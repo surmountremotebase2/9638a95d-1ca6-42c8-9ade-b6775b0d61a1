@@ -1,5 +1,5 @@
 from surmount.base_class import Strategy, TargetAllocation, backtest
-from surmount.data import CryptoAltRanking, MedianCPI
+from surmount.data import CryptoAltRanking, MedianCPI:
 from surmount.logging import log
 
 class TradingStrategy(Strategy):
