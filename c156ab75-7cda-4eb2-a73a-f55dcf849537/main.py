@@ -1,11 +1,11 @@
 from surmount.base_class import Strategy, TargetAllocation, backtest
-from surmount.data import CryptoAltRanking
+from surmount.data import MedianCPI
 from surmount.logging import log
 
 class TradingStrategy(Strategy):
     def __init__(self):
         # Add CryptoAltRanking as a data source
-        self.data_list = [CryptoAltRanking()]
+        self.data_list = [MedianCPI()]
         self.tickers = []
 
     @property
@@ -23,8 +23,9 @@ class TradingStrategy(Strategy):
 
     def run(self, data):
         # Get crypto alt ranking data
-        crypto_rankings = data[("crypto_alt_ranking",)]    
-        asset = next(iter(crypto_rankings[-1]['alt_ranking'])) + "USD"   
-        log(f"Trading: {asset}")
-        return TargetAllocation({asset:1})
+        crypto_rankings = data[("median_cpi",)]
+        log(str(crypto_rankings))
+#        asset = next(iter(crypto_rankings[-1]['alt_ranking'])) + "USD"   
+#        log(f"Trading: {asset}")
+        return TargetAllocation({"AAPL":1})
 
