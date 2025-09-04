@@ -1,10 +1,10 @@
 from surmount.base_class import Strategy, TargetAllocation
-from surmount.data import CryptoAltRanking
+from surmount.data import KrakenCryptoAltRanking
 from surmount.logging import log
 
 class TradingStrategy(Strategy):
     def __init__(self):
-        self.data_list = [CryptoAltRanking()]
+        self.data_list = [KrakenCryptoAltRanking()]
         self.tickers = []
         self.counter = 0
 
