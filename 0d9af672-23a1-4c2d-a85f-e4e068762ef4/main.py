@@ -25,7 +25,7 @@ class TradingStrategy(Strategy):
         if self.counter % 30 != 1:
             return TargetAllocation({})
 
-        crypto_rankings = data[("coinbase_crypto_alt_ranking",)]  # or ("kraken_crypto_alt_ranking",)
+        crypto_rankings = data[("crypto_alt_ranking",)]  # or ("kraken_crypto_alt_ranking",)
         if not isinstance(crypto_rankings, list) or len(crypto_rankings) < 5:
             return TargetAllocation({})
 
