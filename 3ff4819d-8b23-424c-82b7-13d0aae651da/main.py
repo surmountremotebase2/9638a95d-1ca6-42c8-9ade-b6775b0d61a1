@@ -1,11 +1,10 @@
 from surmount.base_class import Strategy, TargetAllocation, backtest
-from surmount.data import KrakenCryptoAltRanking
+from surmount.data import TimMoore
 from surmount.logging import log
 
 class TradingStrategy(Strategy):
     def __init__(self):
-        # Add CryptoAltRanking as a data source
-        self.data_list = [KrakenCryptoAltRanking()]
+        self.data_list = [TimMoore()]
         self.tickers = []
 
     @property
@@ -22,8 +21,6 @@ class TradingStrategy(Strategy):
         
 
     def run(self, data):
-        # Get crypto alt ranking data
-        crypto_rankings = data[("kraken_crypto_alt_ranking",)]    
-        asset = next(iter(crypto_rankings[-1]['alt_ranking'])) + "USD"   
-        log(f"Trading: {asset}")
+        tim_moore_holdings = data[("tim_moore",)]      
+        log(f"Trading: {tim_moore_holdings}")
         return TargetAllocation({asset:1})
