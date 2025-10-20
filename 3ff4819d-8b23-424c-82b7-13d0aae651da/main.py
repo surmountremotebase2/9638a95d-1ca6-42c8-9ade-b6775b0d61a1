@@ -23,4 +23,4 @@ class TradingStrategy(Strategy):
     def run(self, data):
         tim_moore_holdings = data[("tim_moore",)]      
         log(f"Trading: {tim_moore_holdings}")
-        return TargetAllocation({asset:1})
+        return TargetAllocation(tim_moore_holdings)
