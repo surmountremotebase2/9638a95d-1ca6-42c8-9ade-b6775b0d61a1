@@ -1,10 +1,10 @@
 from surmount.base_class import Strategy, TargetAllocation, backtest
-from surmount.data import TimMoore
+from surmount.data import TimMoore, AnalystLong
 from surmount.logging import log
 
 class TradingStrategy(Strategy):
     def __init__(self):
-        self.data_list = [TimMoore()]
+        self.data_list = [AnalystLong()]
         self.tickers = []
 
     @property
@@ -21,7 +21,7 @@ class TradingStrategy(Strategy):
         
 
     def run(self, data):
-        tim_moore_holdings = data[("tim_moore",)]
+        tim_moore_holdings = data[("analyst_long",)]
         allocations = {"AAPL":1}      
         if tim_moore_holdings:
             alloc_dict = tim_moore_holdings[-1]['allocations']
