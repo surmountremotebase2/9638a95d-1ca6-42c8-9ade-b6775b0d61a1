@@ -27,4 +27,5 @@ class TradingStrategy(Strategy):
             alloc_dict = tim_moore_holdings[-1]['allocations']
             log(f"Trading: {tim_moore_holdings[-1]['allocations']}")
             allocations =  dict(list(alloc_dict.items())[-5:])
-        return TargetAllocation({})
+        log(f"allocations:{allocations}")
+        return TargetAllocation(allocations)
