@@ -1,4 +1,4 @@
-rom surmount.base_class import Strategy, TargetAllocation, backtest
+from surmount.base_class import Strategy, TargetAllocation, backtest
 from surmount.data import TimMoore
 from surmount.logging import log
 
