@@ -24,6 +24,6 @@ class TradingStrategy(Strategy):
         tim_moore_holdings = data[("tim_moore",)]      
         log(f"Trading: {tim_moore_holdings}")
         if tim_moore_holdings:
-            return TargetAllocation(tim_moore_holdings)
+            return TargetAllocation(tim_moore_holdings[-1]['allocations'])
         else:
             return TargetAllocation({})
