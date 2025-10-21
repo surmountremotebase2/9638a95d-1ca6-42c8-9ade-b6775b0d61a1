@@ -26,3 +26,5 @@ class TradingStrategy(Strategy):
         if tim_moore_holdings:
             log(f"allocation:{tim_moore_holdings[-1]}")
             return TargetAllocation(tim_moore_holdings[-1]['allocations'])
+        else:
+            return None
