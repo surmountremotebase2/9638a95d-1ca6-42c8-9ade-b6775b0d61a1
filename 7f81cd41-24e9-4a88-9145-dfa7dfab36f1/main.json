@@ -1,1 +1,1 @@
-{"allocations": {"AAPL": 22.0, "MSFT": 20.0, "NVDA": 15.0, "GOOGL": 12.0, "TSLA": 8.0, "V": 7.0, "META": 6.0, "AMZN": 5.0, "BRK.B": 3.0, "JPM": 2.0}, "frequency": 2, "name": "", "period": "months"}
+{"allocations": {"AAPL": 12.0, "MSFT": 10.0, "GOOGL": 8.0, "BRK.B": 7.0, "JPM": 6.0, "NVDA": 5.5, "XOM": 5.0, "JNJ": 4.5, "V": 4.5, "PG": 4.0, "WMT": 4.0, "HD": 3.5, "BAC": 3.5, "CVX": 3.5, "UNH": 3.0, "MA": 3.0, "AMZN": 2.5, "TSM": 2.5, "META": 2.0, "LLY": 2.0}, "frequency": 3, "name": "", "period": "months"}
