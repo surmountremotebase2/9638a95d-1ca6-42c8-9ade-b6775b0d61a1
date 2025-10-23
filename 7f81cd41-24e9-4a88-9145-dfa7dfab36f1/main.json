@@ -1,1 +1,1 @@
-{"allocations": {"AAPL": 35.0, "BAC": 15.0, "CVX": 12.0, "KO": 10.0, "AXP": 8.0, "OXY": 7.0, "KHC": 5.0, "MCO": 4.0, "VZ": 4.0}, "frequency": 30, "name": "Diversified Sector Rotation", "period": "days"}
+{"allocations": {"AAPL": 20.0, "MSFT": 18.0, "GOOGL": 15.0, "NVDA": 12.0, "BRK.B": 10.0, "JPM": 8.0, "V": 7.0, "JNJ": 5.0, "PG": 3.0, "MA": 2.0}, "frequency": 3, "name": "", "period": "months"}
