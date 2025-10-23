@@ -1,1 +1,1 @@
-{"allocations": {"AAPL": 45.0, "BAC": 12.0, "KO": 8.0, "CVX": 7.0, "AXP": 6.0, "OXY": 5.0, "KHC": 4.0, "MCO": 3.5, "PARA": 3.0, "HPQ": 2.5, "SNOW": 2.0, "NU": 2.0}, "frequency": 6, "name": "", "period": "months"}
+{"allocations": {"AAPL": 45.0, "BAC": 12.0, "KO": 8.0, "CVX": 7.0, "AXP": 6.0, "OXY": 5.0, "KHC": 4.0, "MCO": 3.5, "PARA": 3.0, "HPQ": 2.5, "SNOW": 2.0, "NU": 2.0}, "frequency": 30, "name": "Untitled Strategy 193", "period": "days"}
