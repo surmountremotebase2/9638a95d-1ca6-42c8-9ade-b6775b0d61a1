@@ -79,7 +79,7 @@ class TradingStrategy(Strategy):
         if not ohlcv:
             return TargetAllocation({})
 
-        ticker = self._assets[0]
+        ticker = self._assets[1]
         prices = self._extract_closes(ohlcv, ticker)
         if prices.size < 3:
             return TargetAllocation({})
