@@ -45,7 +45,7 @@ def kalman_level_trend(prices: np.ndarray, q_level: float = 1e-4, q_trend: float
 class TradingStrategy(Strategy):
     def __init__(self, trailing_stop_pct: float = 0.05,
                  q_level: float = 1e-4, q_trend: float = 1e-5, r: float = 1e-2):
-        self._assets = ["ETH-USD"]
+        self._assets = ["ETH-USD", "BTC-USD"]
         self.trailing_stop_pct = float(trailing_stop_pct)
         self.q_level = float(q_level)
         self.q_trend = float(q_trend)
