@@ -42,7 +42,7 @@ def kalman_level_trend(prices: np.ndarray, q_level: float = 1e-4, q_trend: float
     return level, trend
 
 
-class KalmanETHStrategy(Strategy):
+class TradingStrategy(Strategy):
     def __init__(self, trailing_stop_pct: float = 0.05,
                  q_level: float = 1e-4, q_trend: float = 1e-5, r: float = 1e-2):
         self._assets = ["ETH-USD"]
