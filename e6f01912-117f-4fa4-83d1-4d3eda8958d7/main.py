@@ -45,7 +45,7 @@ class TradingStrategy(Strategy):
         # Test AnalystEstimates
         analyst_estimates = data.get(("analyst_estimates", "AAPL"))
         if analyst_estimates:
-            log(f"AnalystEstimates data: {analyst_estimates[-1] if analyst_estimates else 'No data'}")
+            log(f"AnalystEstimates data: {analyst_estimates[0] if analyst_estimates else 'No data'}")
 
         return TargetAllocation({"AAPL": 1})
 
