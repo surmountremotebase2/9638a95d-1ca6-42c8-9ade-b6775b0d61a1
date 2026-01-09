@@ -4,8 +4,8 @@ from surmount.logging import log
 
 class TradingStrategy(Strategy):
     def __init__(self):
-        # Multiple tickers
-        self.tickers = ["AAPL", "MSFT", "GOOGL", "AMZN", "META"]
+        # Two tickers only
+        self.tickers = ["AAPL", "MSFT"]
 
         # Build data sources for each ticker
         self.data_list = []
@@ -51,6 +51,8 @@ class TradingStrategy(Strategy):
             if analyst_estimates:
                 log(f"{ticker} AnalystEstimates: {analyst_estimates[0]}")
 
-        # Equal-weight allocation
-        weight = 1 / len(self.tickers)
-        return TargetAllocation({ticker: weight for ticker in self.tickers})
+        # Equal-weight allocation between two tickers
+        return TargetAllocation({
+            "AAPL": 0.5,
+            "MSFT": 0.5
+        })
