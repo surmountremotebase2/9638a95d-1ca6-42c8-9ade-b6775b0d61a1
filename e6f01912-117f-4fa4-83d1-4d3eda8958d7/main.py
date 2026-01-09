@@ -4,14 +4,18 @@ from surmount.logging import log
 
 class TradingStrategy(Strategy):
     def __init__(self):
-        # Test all four data sources
-        self.tickers = ["AAPL"]
-        self.data_list = [
-            LeveredDCF("AAPL"),
-            EarningsSurprises("AAPL"),
-            EarningsCalendar("AAPL"),
-            AnalystEstimates("AAPL")
-        ]
+        # Multiple tickers
+        self.tickers = ["AAPL", "MSFT", "GOOGL", "AMZN", "META"]
+
+        # Build data sources for each ticker
+        self.data_list = []
+        for ticker in self.tickers:
+            self.data_list.extend([
+                LeveredDCF(ticker),
+                EarningsSurprises(ticker),
+                EarningsCalendar(ticker),
+                AnalystEstimates(ticker)
+            ])
 
     @property
     def interval(self):
@@ -25,28 +29,28 @@ class TradingStrategy(Strategy):
     def data(self):
         return self.data_list
 
-
     def run(self, data):
-        # Test LeveredDCF
-        levered_dcf = data.get(("levered_dcf", "AAPL"))
-        if levered_dcf:
-            log(f"LeveredDCF data: {levered_dcf[-1] if levered_dcf else 'No data'}")
+        for ticker in self.tickers:
+            # LeveredDCF
+            levered_dcf = data.get(("levered_dcf", ticker))
+            if levered_dcf:
+                log(f"{ticker} LeveredDCF: {levered_dcf[-1]}")
 
-        # Test EarningsSurprises
-        earnings_surprises = data.get(("earnings_surprises", "AAPL"))
-        if earnings_surprises:
-            log(f"EarningsSurprises data: {earnings_surprises[-1] if earnings_surprises else 'No data'}")
+            # EarningsSurprises
+            earnings_surprises = data.get(("earnings_surprises", ticker))
+            if earnings_surprises:
+                log(f"{ticker} EarningsSurprises: {earnings_surprises[-1]}")
 
-        # Test EarningsCalendar
-        earnings_calendar = data.get(("earnings_calendar", "AAPL"))
-        if earnings_calendar:
-            log(f"EarningsCalendar data: {earnings_calendar[-1] if earnings_calendar else 'No data'}")
+            # EarningsCalendar
+            earnings_calendar = data.get(("earnings_calendar", ticker))
+            if earnings_calendar:
+                log(f"{ticker} EarningsCalendar: {earnings_calendar[-1]}")
 
-        # Test AnalystEstimates
-        analyst_estimates = data.get(("analyst_estimates", "AAPL"))
-        if analyst_estimates:
-            log(f"AnalystEstimates data: {analyst_estimates[0] if analyst_estimates else 'No data'}")
+            # AnalystEstimates
+            analyst_estimates = data.get(("analyst_estimates", ticker))
+            if analyst_estimates:
+                log(f"{ticker} AnalystEstimates: {analyst_estimates[0]}")
 
-        return TargetAllocation({"AAPL": 1})
-
-    
+        # Equal-weight allocation
+        weight = 1 / len(self.tickers)
+        return TargetAllocation({ticker: weight for ticker in self.tickers})
