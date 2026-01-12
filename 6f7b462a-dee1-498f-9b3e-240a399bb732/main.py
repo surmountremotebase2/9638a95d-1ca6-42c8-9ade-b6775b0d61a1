@@ -4,7 +4,7 @@ from surmount.logging import log
 
 class TradingStrategy(Strategy):
     def __init__(self):
-        self.tickers = ["AAPL", "MSFT"]
+        self.tickers = ["AAPL"]
 
         # Build data sources for each ticker
         self.data_list = []
