@@ -1,1 +1,1 @@
-{"allocations": {"IBM": 25.0, "GOOGL": 20.0, "NVDA": 18.0, "MSFT": 15.0, "IONQ": 8.0, "RGTI": 6.0, "HONR": 5.0, "AMD": 3.0}, "frequency": 3, "name": "", "period": "months"}
+{"allocations": {"IBM": 20.0, "GOOGL": 25.0, "NVDA": 18.0, "MSFT": 15.0, "IONQ": 8.0, "RGTI": 6.0, "HONR": 5.0, "AMD": 3.0}, "frequency": 3, "name": "Dynamic Equity Diversification", "period": "months"}
