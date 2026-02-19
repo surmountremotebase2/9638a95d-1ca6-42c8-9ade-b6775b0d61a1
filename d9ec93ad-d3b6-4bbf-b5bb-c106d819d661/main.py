@@ -1,3 +1,9 @@
+from surmount.base_class import Strategy, TargetAllocation, backtest
+from surmount.logging import log
+from surmount.data import NDWFirstTrustFocusFive, NDWFirstTrustFocusFiveTrades
+from datetime import datetime
+
+
 def run(self, data):
     for i in self.data_list:
         key = tuple(i)
