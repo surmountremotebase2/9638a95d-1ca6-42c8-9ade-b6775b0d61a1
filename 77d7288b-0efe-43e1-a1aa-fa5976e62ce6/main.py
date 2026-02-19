@@ -36,8 +36,3 @@ class TradingStrategy(Strategy):
         return None
 
 
-start = datetime.strptime("2026-01-16", '%Y-%m-%d')
-end = datetime.strptime("2026-02-16", '%Y-%m-%d')
-a = backtest(TradingStrategy(), start, end, 1000)
-print('here')
-print(a['stats'])
