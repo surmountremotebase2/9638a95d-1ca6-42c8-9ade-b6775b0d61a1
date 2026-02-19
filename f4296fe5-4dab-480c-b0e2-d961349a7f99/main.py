@@ -1,43 +1,57 @@
-from surmount.base_class import Strategy, TargetAllocation
-from surmount.technical_indicators import BB
+from surmount.base_class import Strategy, TargetAllocation, backtest
+from surmount.data import LeveredDCF, EarningsSurprises, EarningsCalendar, AnalystEstimates
 from surmount.logging import log
 
 class TradingStrategy(Strategy):
-    @property
-    def assets(self):
-        # Strategy applies to gcusd
-        return ["gcusd"]
+    def __init__(self):
+        self.tickers = ["AAPL", "MSFT"]
+
+        # Build data sources for each ticker
+        self.data_list = []
+        for ticker in self.tickers:
+            self.data_list.extend([
+                LeveredDCF(ticker),
+                EarningsSurprises(ticker),
+                EarningsCalendar(ticker),
+                AnalystEstimates(ticker)
+            ])
 
     @property
     def interval(self):
         return "1day"
 
+    @property
+    def assets(self):
+        return self.tickers
+
+    @property
+    def data(self):
+        return self.data_list
+
     def run(self, data):
-        holdings = data["holdings"]
-        data = data["ohlcv"]
-        
-        #for i in range(len(data)):
-        #    data[i]["gcusd"]["open"] = data[i]["gcusd"]["close"]
-        
-      
-        if len(data) < 12:
-            # There isn't enough data to calculate Bollinger Bands
-            # log("Not enough data to calculate Bollinger Bands")
-            return TargetAllocation({})
+        allocation = {}
 
-        gcusd_stake = holdings.get("gcusd", 0)
-        gcusd_bbands = BB("gcusd", data, 12, 1.5)
-        current_price = data[-1]["gcusd"]['close']  # Current price of gcusd
+        for ticker in self.tickers:
+            # Levered DCF
+            levered_dcf = data.get(("levered_dcf", ticker))
+            if levered_dcf:
+                log(f"{ticker} LeveredDCF: {levered_dcf[-1]}")
 
-        # log(f" {current_price}  {gcusd_bbands['lower'][-1]}   {gcusd_bbands['mid'][-1]}")
+            # Earnings Surprises
+            earnings_surprises = data.get(("earnings_surprises", ticker))
+            if earnings_surprises:
+                log(f"{ticker} EarningsSurprises: {earnings_surprises[-1]}")
 
-        # Buying condition: the price falls below the lower Bollinger Band
-        if gcusd_stake ==0 and current_price < gcusd_bbands['lower'][-1]:
-            # log(f"Buying gcusd - price below lower Bollinger Band. Current price: {current_price}")
-            gcusd_stake = 1  # Buy gcusd
-        # Selling condition: the price moves above the middle Bollinger Band
-        if gcusd_stake >0 and current_price > gcusd_bbands['mid'][-1]:
-            # log(f"Closing gcusd - price above middle Bollinger Band. Current price: {current_price}")
-            gcusd_stake = 0  # Exit position in gcusd
+            # Earnings Calendar
+            earnings_calendar = data.get(("earnings_calendar", ticker))
+            if earnings_calendar:
+                log(f"{ticker} EarningsCalendar: {earnings_calendar[-1]}")
 
-        return TargetAllocation({"gcusd": gcusd_stake})
+            # Analyst Estimates
+            analyst_estimates = data.get(("analyst_estimates", ticker))
+            if analyst_estimates:
+                log(f"{ticker} AnalystEstimates: {analyst_estimates[0]}")
+
+            allocation[ticker] = 1 / len(self.tickers)
+
+        return TargetAllocation(allocation)
