@@ -24,7 +24,7 @@ class TradingStrategy(Strategy):
     def run(self, data):
         key = tuple(self.data_list[0])
         ndw_data = data.get(key)
-
+        log(str(ndw_data))
         if ndw_data and len(ndw_data) > 0:
             allocations = ndw_data[-1].get("allocations", {})
             total = sum(allocations.values())
