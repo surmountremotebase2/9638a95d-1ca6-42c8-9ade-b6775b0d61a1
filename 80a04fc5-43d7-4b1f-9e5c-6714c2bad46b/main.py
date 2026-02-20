@@ -28,6 +28,7 @@ class TradingStrategy(Strategy):
         if ndw_data and len(ndw_data) > 0:
             allocations = ndw_data[-1].get("allocations", {})
             total = sum(allocations.values())
+            log(allocations.values())
 
             if total > 0:
                 normalized = {k: v / total for k, v in allocations.items()}
