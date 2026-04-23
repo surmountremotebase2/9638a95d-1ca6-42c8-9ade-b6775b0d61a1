@@ -4,7 +4,6 @@ from surmount.base_class import Strategy, TargetAllocation
 from surmount.logging import log
 
 
-
 class TradingStrategy(Strategy):
 
     def __init__(self):
