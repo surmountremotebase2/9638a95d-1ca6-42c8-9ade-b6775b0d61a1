@@ -1,10 +1,10 @@
 from surmount.base_class import Strategy, TargetAllocation, backtest
-from surmount.data import InsiderPurchasesMin500MMarketCap
+from surmount.data import HouseEnergyAndCommerceCommittee
 from surmount.logging import log
 
 class TradingStrategy(Strategy):
     def __init__(self):
-        self.data_list = [InsiderPurchasesMin500MMarketCap()]
+        self.data_list = [HouseEnergyAndCommerceCommittee()]
         self.tickers = []
 
     @property
@@ -20,11 +20,11 @@ class TradingStrategy(Strategy):
         return self.data_list
 
     def run(self, data):
-        insider_purchases_min_500m_market_cap_holdings = data[("insider_purchases_min_500m_market_cap",)]
+        house_energy_and_commerce_committee_holdings = data[("house_energy_and_commerce_committee",)]
         allocations = {"AAPL": 1}
-        if insider_purchases_min_500m_market_cap_holdings:
-            alloc_dict = insider_purchases_min_500m_market_cap_holdings[-1]['allocations']
-            log(f"Trading: {insider_purchases_min_500m_market_cap_holdings[-1]['allocations']}")
+        if house_energy_and_commerce_committee_holdings:
+            alloc_dict = house_energy_and_commerce_committee_holdings[-1]['allocations']
+            log(f"Trading: {house_energy_and_commerce_committee_holdings[-1]['allocations']}")
             allocations = alloc_dict
         log(f"allocations:{allocations}")
         return TargetAllocation(allocations)
