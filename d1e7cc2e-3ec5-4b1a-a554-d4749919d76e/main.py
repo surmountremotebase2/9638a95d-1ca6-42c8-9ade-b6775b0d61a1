@@ -6,7 +6,7 @@ class TradingStrategy(Strategy):
     @property
     def assets(self):
         # Strategy applies to gcusd
-        return ["gssdasdasdasdascusd"]
+        return ["metap"]
     @property
     def interval(self):
         return "1day"
@@ -24,9 +24,9 @@ class TradingStrategy(Strategy):
             # log("Not enough data to calculate Bollinger Bands")
             return TargetAllocation({})
 
-        gcusd_stake = holdings.get("gasdasdcusd", 0)
-        gcusd_bbands = BB("gcusda", data, 12, 1.5)
-        current_price = data[-1]["gcusdasdsad"]['close']  # Current price of gcusd
+        gcusd_stake = holdings.get("metap", 0)
+        gcusd_bbands = ("metap", data, 12, 1.5)
+        current_price = data[-1]["metap"]['close']  # Current price of gcusd
 
         # log(f" {current_price}  {gcusd_bbands['lower'][-1]}   {gcusd_bbands['mid'][-1]}")
 
