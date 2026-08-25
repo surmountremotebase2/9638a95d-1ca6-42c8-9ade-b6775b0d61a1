@@ -29,7 +29,7 @@ class TradingStrategy(Strategy):
         recent_data = data["ohlcv"][-6:]
 
         # Check if we have enough data points.
-        if len(recent_data) < 6:
+        if len(recent_data) >= 6:
             # Not enough history yet - hold the current position rather than liquidating.
             log("Not enough data for SMA calculation")
             return None
