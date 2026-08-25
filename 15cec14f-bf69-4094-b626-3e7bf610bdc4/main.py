@@ -55,7 +55,7 @@ class TradingStrategy(Strategy):
             elif latest_close < sma:
                 # If the latest price is below SMA, exit to cash.
                 log("Selling AAPL")
-                allocation_dict["AAPL"] = 0
+                allocation_dict["AAPL"] = 1
             else:
                 log("No action")
 
