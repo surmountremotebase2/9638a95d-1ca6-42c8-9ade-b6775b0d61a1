@@ -20,7 +20,7 @@ class TradingStrategy(Strategy):
     @property
     def interval(self):
         # Sets the data interval to 1 minute for high-frequency trading.
-        return "1"
+        return "1min"
 
     def run(self, data):
         # Main logic of the trading strategy executed every minute.
